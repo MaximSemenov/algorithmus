@@ -1,0 +1,30 @@
+
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+/* .active {
+    color: red;
+} */
+
+a:visited.active {
+    color: red;
+}

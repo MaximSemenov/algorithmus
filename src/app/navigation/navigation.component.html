@@ -1,0 +1,22 @@
+<div id="navigationComponent">
+  
+ 
+    <ul>
+        <li>
+            <a routerLink="/home" routerLinkActive="active">
+                Home
+            </a>
+        </li>
+
+        <li *ngFor="let link of links">
+
+            <a [routerLink]="['/problem', link.id]" routerLinkActive="active">
+                {{link.title}}
+            </a>
+
+        </li>
+
+    </ul> 
+
+
+ </div>
