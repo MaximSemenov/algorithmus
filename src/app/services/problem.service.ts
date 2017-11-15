@@ -8,13 +8,17 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/first';
 import 'rxjs/add/observable/of';
+
 
 
 export type Problem = {
   'id': number,
   'title': string,
-  'decription': string
+  'description': string,
+  'solution': string,
+  'filename': string
 };
 
 @Injectable()
@@ -28,23 +32,45 @@ export class ProblemService {
 
   getProblem(id: number): Observable<Problem> {
 
-
     if (!this.problemsCache) {
-      this.problemsCache = Observable.create((observer: Observer<Problem[]>) => {
-        this.http.get<Problem[]>('./assets/problems.json').subscribe(problems => {
-          observer.next(problems);
-          observer.complete();
-        });
-      });
+      this.problemsCache = this.http.get<Problem[]>('./assets/base64_problems.json')
+        .first();
     }
-    debugger;
     return this.problemsCache
-
       .map((problems: Problem[]) => {
 
         return problems.filter((problem: Problem) => problem.id === id)[0];
 
-
       });
   }
+
+
+  // .map((problems: Problem[]) => {
+
+  //   return problems.filter((problem: Problem) => problem.id === id)[0];
+  // });
+
+  // getProblem(id: number): Observable<Problem> {
+
+
+  //   if (!this.problemsCache) {
+  //     this.problemsCache = Observable.create((observer: Observer<Problem[]>) => {
+  //       this.http.get<Problem[]>('./assets/problems.json').subscribe(problems => {
+  //         observer.next(problems);
+  //         observer.complete();
+  //       });
+  //     });
+  //   }
+  //   debugger;
+  //   return this.problemsCache
+
+  //     .map((problems: Problem[]) => {
+
+  //       return problems.filter((problem: Problem) => problem.id === id)[0];
+
+
+  //     });
+  // }
+
+
 }

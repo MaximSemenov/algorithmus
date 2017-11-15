@@ -5,8 +5,11 @@
 /out-tsc
 /dist
 
+
+
 # dependencies
 /node_modules
+/base64_solutions
 
 # IDEs and editors
 /.idea

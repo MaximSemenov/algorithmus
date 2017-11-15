@@ -28,11 +28,13 @@ div#appWrapper {
     position: relative;
     margin: 1%;
     height: 600px;
+    font-size: 1.6em;
 }
 
 div#problemComponent {
     border: 1px solid deepskyblue;
-    height: 20%
+    height: 20%;
+
 }
 
 div#productivityComponent {

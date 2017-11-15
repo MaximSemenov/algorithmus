@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-problem',
@@ -14,7 +15,7 @@ import 'rxjs/add/operator/filter';
 })
 export class ProblemComponent implements OnInit {
 
-  public problemDescription;
+  public problemSolution: string;
 
   constructor(private problemService: ProblemService, private route: ActivatedRoute) { }
 
@@ -24,7 +25,15 @@ export class ProblemComponent implements OnInit {
       .pluck('id')
       .filter(Boolean)
       .switchMap(id => this.problemService.getProblem(+id))
-      .subscribe(problem => this.problemDescription = problem.decription );
+      .map(base64Problem => {
+
+        console.log (atob(base64Problem.solution));
+        base64Problem.solution = atob(base64Problem.solution);
+
+       return base64Problem;
+
+      })
+      .subscribe(problem => this.problemSolution = problem.solution);
 
   }
 

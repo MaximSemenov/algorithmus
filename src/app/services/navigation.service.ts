@@ -12,9 +12,9 @@ export class NavigationService {
 
   private links: Links[] = [
 
-    { id: 1, title: 'Problem 1' },
-    { id: 2, title: 'Problem 2' },
-    { id: 3, title: 'Problem 3' }
+    { id: 0, title: 'Problem 1' },
+    { id: 1, title: 'Problem 2' },
+    { id: 2, title: 'Problem 3' }
   ];
 
   constructor() { }
