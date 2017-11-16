@@ -299,7 +299,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/problem/problem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<mat-card class=\"components\" id=\"problemComponent\">Problem card\n\n\n    {{problemDescription}}\n\n\n</mat-card>\n<!-- <div class=\"components\" id=\"problemComponent\">problem div</div> -->"
+module.exports = "<mat-card class=\"components\" id=\"problemComponent\">\n\n    <p>Problem card:</p>\n    <p> {{problemDescription}}</p>\n\n</mat-card>"
 
 /***/ }),
 
@@ -317,6 +317,8 @@ module.exports = "\n<mat-card class=\"components\" id=\"problemComponent\">Probl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -326,6 +328,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -343,7 +346,7 @@ var ProblemComponent = (function () {
             .pluck('id')
             .filter(Boolean)
             .switchMap(function (id) { return _this.problemService.getProblem(+id); })
-            .subscribe(function (problem) { return _this.problemDescription = problem.decription; });
+            .subscribe(function (problem) { return _this.problemDescription = problem.description; });
     };
     ProblemComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
@@ -382,7 +385,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/productivity/productivity.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<mat-card class=\"components\" id=\"productivityComponent\">Solution card</mat-card>\n\n<!-- <div class=\"components\" id=\"productivityComponent\">productivity div</div> -->"
+module.exports = "\n<mat-card class=\"components\" id=\"productivityComponent\">Productivity card</mat-card>\n\n<!-- <div class=\"components\" id=\"productivityComponent\">productivity div</div> -->"
 
 /***/ }),
 
@@ -441,9 +444,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var NavigationService = (function () {
     function NavigationService() {
         this.links = [
-            { id: 1, title: 'Problem 1' },
-            { id: 2, title: 'Problem 2' },
-            { id: 3, title: 'Problem 3' }
+            { id: 0, title: 'Problem 1' },
+            { id: 1, title: 'Problem 2' },
+            { id: 2, title: 'Problem 3' }
         ];
     }
     NavigationService.prototype.getAllLinks = function () {
@@ -467,16 +470,16 @@ var NavigationService = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProblemService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__ = __webpack_require__("../../../../rxjs/add/operator/do.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_switchMap__ = __webpack_require__("../../../../rxjs/add/operator/switchMap.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_switchMap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__ = __webpack_require__("../../../../rxjs/add/operator/do.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__("../../../../rxjs/add/operator/switchMap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_first__ = __webpack_require__("../../../../rxjs/add/operator/first.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_first___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_first__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/add/observable/of.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_observable_of__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -490,7 +493,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { Observable } from 'Rxjs/Observable';
 
 
 
@@ -502,16 +504,10 @@ var ProblemService = (function () {
         this.http = http;
     }
     ProblemService.prototype.getProblem = function (id) {
-        var _this = this;
         if (!this.problemsCache) {
-            this.problemsCache = __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].create(function (observer) {
-                _this.http.get('./assets/problems.json').subscribe(function (problems) {
-                    observer.next(problems);
-                    observer.complete();
-                });
-            });
+            this.problemsCache = this.http.get('./assets/base64_problems.json')
+                .first();
         }
-        debugger;
         return this.problemsCache
             .map(function (problems) {
             return problems.filter(function (problem) { return problem.id === id; })[0];
@@ -550,7 +546,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/solution/solution.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"components\" id=\"solutionComponent\">Solution card</mat-card>\n\n<!-- <div class=\"components\" id=\"solutionComponent\">solution div</div> -->"
+module.exports = "<mat-card class=\"components\" id=\"solutionComponent\">\n\n    <p>Solution card:</p>\n\n    <p> {{problemSolution}} </p>\n\n</mat-card>\n\n<!-- <div class=\"components\" id=\"solutionComponent\">solution div</div> -->"
 
 /***/ }),
 
@@ -559,7 +555,17 @@ module.exports = "<mat-card class=\"components\" id=\"solutionComponent\">Soluti
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SolutionComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_problem_service__ = __webpack_require__("../../../../../src/app/services/problem.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_pluck__ = __webpack_require__("../../../../rxjs/add/operator/pluck.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_pluck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_pluck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__ = __webpack_require__("../../../../rxjs/add/operator/switchMap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -570,20 +576,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+
+
 var SolutionComponent = (function () {
-    function SolutionComponent() {
+    function SolutionComponent(problemService, route) {
+        this.problemService = problemService;
+        this.route = route;
     }
     SolutionComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .pluck('id')
+            .filter(Boolean)
+            .switchMap(function (id) { return _this.problemService.getProblem(+id); })
+            .map(function (base64Problem) {
+            base64Problem.solution = atob(base64Problem.solution);
+            return base64Problem;
+        })
+            .subscribe(function (problem) { return _this.problemSolution = problem.solution; });
     };
     SolutionComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'app-solution',
             template: __webpack_require__("../../../../../src/app/solution/solution.component.html"),
             styles: [__webpack_require__("../../../../../src/app/solution/solution.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__services_problem_service__["a" /* ProblemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_problem_service__["a" /* ProblemService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
     ], SolutionComponent);
     return SolutionComponent;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=solution.component.js.map
