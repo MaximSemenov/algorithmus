@@ -57,8 +57,8 @@ function readAllFiles(filess) {
                 }
 
                 problem.id = counterId;
-                problem.title = "Some Title";
-                problem.description = "Please read me I am a description";
+                problem.title = "Please solve this problem";
+                problem.description = "Return the factorial of the provided integer.";
                 problem.solution = new Buffer(data).toString('base64');
                 problem.filename = filename;
 

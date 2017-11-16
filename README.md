@@ -1,5 +1,7 @@
 # Algorithmus
 
+Algorithmus is a small Angular app that collects and displays the most of JavaScript algorithms, problems tasks and issues I have collected on my computer since January 2017. It has smple navigation and structure.  The cool think is it contains a Node script that picks all .js files from your local directory and generates a JSON file with Base64 binary-to-text encoding scheme. Also it has a nice little feature to test code performance! Try it out.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
 ## Development server

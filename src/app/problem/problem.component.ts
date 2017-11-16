@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 })
 export class ProblemComponent implements OnInit {
 
-  public problemSolution: string;
+  public problemDescription: string;
 
   constructor(private problemService: ProblemService, private route: ActivatedRoute) { }
 
@@ -25,15 +25,7 @@ export class ProblemComponent implements OnInit {
       .pluck('id')
       .filter(Boolean)
       .switchMap(id => this.problemService.getProblem(+id))
-      .map(base64Problem => {
-
-        console.log (atob(base64Problem.solution));
-        base64Problem.solution = atob(base64Problem.solution);
-
-       return base64Problem;
-
-      })
-      .subscribe(problem => this.problemSolution = problem.solution);
+      .subscribe(problem => this.problemDescription = problem.description);
 
   }
 
