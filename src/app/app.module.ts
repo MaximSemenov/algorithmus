@@ -8,9 +8,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 
 
 import { AppComponent } from './app.component';
@@ -19,13 +20,24 @@ import { ProblemComponent } from './problem/problem.component';
 import { SolutionComponent } from './solution/solution.component';
 import { ProductivityComponent } from './productivity/productivity.component';
 import { HomeComponent } from './home/home.component';
+import { AtobPipe } from './atob.pipe';
+
+import * as hljs from 'highlight.js';
+import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
+
+
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'problem/:id', component: HomeComponent }
 ];
+
+
+export function highlightJsFactory() {
+  return hljs;
+}
 
 @NgModule({
   declarations: [
@@ -34,7 +46,8 @@ const routes: Routes = [
     ProblemComponent,
     SolutionComponent,
     ProductivityComponent,
-    HomeComponent
+    HomeComponent,
+    AtobPipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +55,12 @@ const routes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatSidenavModule
+    MatButtonModule,
+    MatSidenavModule,
+    HighlightJsModule.forRoot({
+      provide: HIGHLIGHT_JS,
+      useFactory: highlightJsFactory
+    })
 
   ],
   providers: [NavigationService, ProblemService],

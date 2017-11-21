@@ -1,4 +1,14 @@
+<mat-card class="components clearfix" id="productivityComponent">
 
-<mat-card class="components" id="productivityComponent">Productivity card</mat-card>
 
-<!-- <div class="components" id="productivityComponent">productivity div</div> -->
+    <p id="cardTitle">Productivity card:</p>
+
+    <button mat-raised-button color="primary" (click)="executeSolution()">Test Performance</button>
+
+    <div id="report" *ngIf="isReportShown">
+        <h3>Solution performance report:</h3>
+        <p>This function has been executed: <b>1000 times. </b> </p>
+        <p>The performance time: <b> {{performanceTime}} milliseconds. </b></p>
+        <p>The performance time: <b> {{performanceTime / 1000}} seconds. </b></p>
+    </div>
+</mat-card>

@@ -4,55 +4,32 @@ let fs = require('fs'),
     counterId = 0,
     arr = [];
 
-// let promise = new Promise(function (resolve, reject) {
-
-//     readFilesFromDirectory('./base64_solutions', null, "Error happened");
-
-//     function readFilesFromDirectory(directory, fileContent, errorMsg) {
-//         files = fs.readdir('./base64_solutions', (err, fileNames) => {
-
-//             if (err) {
-//                 console.log(`${errorMsg} on readdir function`);
-//                 return;
-//             }
-
-           
-             
-            
-       
-//         });
-        
-//     }
-    
-//     resolve(files);
-// });
-
 
 let promise = new Promise(function (resolve, reject) {
-    
-        readFilesFromDirectory('./base64_solutions', null, "Error happened");
-    
-        function readFilesFromDirectory(directory, fileContent, errorMsg) {
-            files = fs.readdir('./base64_solutions', (err, fileNames) => {
-    
-                if (err) {
-                    console.log(`${errorMsg} on readdir function`);
-                    return;
-                }
-    
 
-                 
-                
-           
-            });
-            
-        }
-        
-        resolve(files);
-    });
+    readFilesFromDirectory('./base64_solutions', null, "Error happened");
+
+    function readFilesFromDirectory(directory, fileContent, errorMsg) {
+        files = fs.readdir('./base64_solutions', (err, fileNames) => {
+
+            if (err) {
+                console.log(`${errorMsg} on readdir function`);
+                return;
+            }
+
+            resolve(files);
+
+
+
+        });
+
+    }
+
+
+});
 
 promise.then(filess => {
-console.log (files + " ???")
+    console.log(files + " ???")
     readAllFiles(filess);
 
 }).then(() => {

@@ -1,9 +1,14 @@
 <mat-card class="components" id="solutionComponent">
 
-    <p>Solution card:</p>
+    <p id="cardTitle">Solution card:</p>
 
-    <p> {{problemSolution}} </p>
+<!-- 
+    <p> {{problemSolution$| async | atob  }}  </p> -->
+    <pre><code mwlHighlightJs [source]="problemSolution$| async | atob " language="javascript" ></code></pre>
+
 
 </mat-card>
+
+
 
 <!-- <div class="components" id="solutionComponent">solution div</div> -->

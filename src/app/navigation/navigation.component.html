@@ -1,22 +1,38 @@
 <div id="navigationComponent">
-  
- 
+
+
     <ul>
         <li>
             <a routerLink="/home" routerLinkActive="active">
                 Home
             </a>
         </li>
+    </ul>
 
-        <li *ngFor="let link of links">
+    <ol>
 
-            <a [routerLink]="['/problem', link.id]" routerLinkActive="active">
-                {{link.title}}
-            </a>
+        <li>
+            <a [routerLink]="['/problem/0']" (click)="isDropDownOpen = !isDropDownOpen"> Basic Algorithm Scripting </a>
+            <ul *ngIf="isDropDownOpen" class="dropDownList">
+                <li *ngFor="let link of links">
+
+                    <a [routerLink]="['/problem', link.id]" routerLinkActive="active">
+                        {{link.title}}
+                    </a>
+
+                </li>
+            </ul>
 
         </li>
 
-    </ul> 
+        <li>
+            <a href="#">Intermediate Algorithm Scripting</a>
+        </li>
+        <li>
+            <a href="#"> Advanced Algorithm Scripting</a>
+        </li>
+
+    </ol>
 
 
- </div>
+</div>

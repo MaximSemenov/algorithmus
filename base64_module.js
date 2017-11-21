@@ -1,8 +1,7 @@
 let fs = require('fs'),
     files,
-    problems = [],
-    counterId = 0,
-    arrOfPromises = [];
+    counterId = 0
+
 
 let promise = new Promise(function (resolve, reject) {
 
@@ -24,9 +23,7 @@ let promise = new Promise(function (resolve, reject) {
 promise.then(files => {
     console.log(`These files: '${files[0]}' have been written from ${files[1]} directory.`);
 
-    readAllFiles(files[0]);
-
-    Promise.all(arrOfPromises).then(arrayOfProblems => {
+    readAllFiles(files[0]).then(problems => {
         fs.writeFile('./src/assets/base64_problems.json', JSON.stringify(problems, null, 4), (err) => {
 
             if (err) {
@@ -42,6 +39,9 @@ promise.then(files => {
 
 function readAllFiles(filess) {
 
+    const arrOfPromises = [],
+        problems = []
+
     filess.forEach(filename => {
 
         arrOfPromises.push(new Promise(function (resolve, reject) {
@@ -56,9 +56,18 @@ function readAllFiles(filess) {
                     return;
                 }
 
+                // console.log(data.toString().match(/#.+#/)[0].replace(/#/g, ""))
+                // console.log(data.toString().match(/#.+#/)[0].replace(/#/g, ""))
+
+
+
+
                 problem.id = counterId;
-                problem.title = "Please solve this problem";
-                problem.description = "Return the factorial of the provided integer.";
+                problem.title = data.toString().match(/#.+#/)[0].replace(/#/g, "");
+                problem.description = data.toString().match(/@.+@/)[0].replace(/@/g, "");
+
+                data = data.toString().match(/%&[^]+/g)[0].replace(/%&/, "");
+
                 problem.solution = new Buffer(data).toString('base64');
                 problem.filename = filename;
 
@@ -69,5 +78,7 @@ function readAllFiles(filess) {
             });
         }))
     });
+
+    return Promise.all(arrOfPromises).then(_ => problems);
 };
 

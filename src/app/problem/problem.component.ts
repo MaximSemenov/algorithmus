@@ -8,14 +8,22 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
+type ProblemTitleDescription = {
+  'title': string,
+  'description': string
+};
+
 @Component({
   selector: 'app-problem',
   templateUrl: './problem.component.html',
   styleUrls: ['./problem.component.css']
 })
+
+
+
 export class ProblemComponent implements OnInit {
 
-  public problemDescription: string;
+  public problemTitleAndDescription: ProblemTitleDescription;
 
   constructor(private problemService: ProblemService, private route: ActivatedRoute) { }
 
@@ -25,7 +33,10 @@ export class ProblemComponent implements OnInit {
       .pluck('id')
       .filter(Boolean)
       .switchMap(id => this.problemService.getProblem(+id))
-      .subscribe(problem => this.problemDescription = problem.description);
+      .subscribe(problem => this.problemTitleAndDescription = {
+        title: problem.title,
+        description: problem.description
+      });
 
   }
 
