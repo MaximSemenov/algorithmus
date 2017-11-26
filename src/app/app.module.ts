@@ -24,6 +24,10 @@ import { AtobPipe } from './atob.pipe';
 
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { FailedComponent } from './productivity/failed/failed.component';
+import { SuccessComponent } from './productivity/success/success.component';
+
 
 
 
@@ -47,7 +51,10 @@ export function highlightJsFactory() {
     SolutionComponent,
     ProductivityComponent,
     HomeComponent,
-    AtobPipe
+    AtobPipe,
+    WelcomeComponent,
+    FailedComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

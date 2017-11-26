@@ -11,6 +11,7 @@ export class NavigationComponent implements OnInit {
 
   public links: Links[];
   public isDropDownOpen: Boolean = false;
+  public ff: Boolean = false;
 
   constructor(private navService: NavigationService) { }
 

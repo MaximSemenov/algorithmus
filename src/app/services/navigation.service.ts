@@ -12,9 +12,9 @@ export class NavigationService {
 
   private links: Links[] = [
 
-    { id: 0, title: 'Problem 1' },
-    { id: 1, title: 'Problem 2' },
-    { id: 2, title: 'Problem 3' }
+    { id: 0, title: 'Check for Palindromes' },
+    { id: 1, title: 'Reverse a String' },
+    { id: 2, title: 'Factorialize a Number' }
   ];
 
   constructor() { }

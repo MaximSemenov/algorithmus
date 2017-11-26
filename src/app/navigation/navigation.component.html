@@ -1,38 +1,43 @@
 <div id="navigationComponent">
+    <mat-card id="nav">
+
+        <ul>
+            <li>
+                <a routerLink="/home" routerLinkActive="active">
+                    Home
+                </a>
+            </li>
+        </ul>
+
+        <ol>
+
+            <li>
+                <a [routerLink]="['/problem/0']" (click)="isDropDownOpen = !isDropDownOpen"> Basic Algorithm Scripting </a>
+                <ul *ngIf="isDropDownOpen" class="dropDownList">
+                    <li *ngFor="let link of links">
+
+                        <a [routerLink]="['/problem', link.id]" routerLinkActive="active">
+                            {{link.title}}
+                        </a>
+
+                    </li>
+                </ul>
+
+            </li>
+
+            <li>
+                <a href="#">Intermediate Algorithm Scripting</a>
+            </li>
+            <li>
+                <a href="#"> Advanced Algorithm Scripting</a>
+            </li>
+
+            <li>
+                <a href="#"> Functional Programming in Javascript</a>
+            </li>
+        </ol>
 
 
-    <ul>
-        <li>
-            <a routerLink="/home" routerLinkActive="active">
-                Home
-            </a>
-        </li>
-    </ul>
-
-    <ol>
-
-        <li>
-            <a [routerLink]="['/problem/0']" (click)="isDropDownOpen = !isDropDownOpen"> Basic Algorithm Scripting </a>
-            <ul *ngIf="isDropDownOpen" class="dropDownList">
-                <li *ngFor="let link of links">
-
-                    <a [routerLink]="['/problem', link.id]" routerLinkActive="active">
-                        {{link.title}}
-                    </a>
-
-                </li>
-            </ul>
-
-        </li>
-
-        <li>
-            <a href="#">Intermediate Algorithm Scripting</a>
-        </li>
-        <li>
-            <a href="#"> Advanced Algorithm Scripting</a>
-        </li>
-
-    </ol>
-
+    </mat-card>
 
 </div>

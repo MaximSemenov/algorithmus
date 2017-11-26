@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 * {
@@ -26,46 +24,43 @@ div {
 div#appWrapper {
     position: relative;
     margin: 1%;
-    height: 600px;
     font-size: 1.6em;
 }
 
-div#problemComponent {
-    border: 1px solid deepskyblue;
-    height: 20%;
+mat-card#problemComponent {
+    margin-bottom: 5px;
 }
 
-div#productivityComponent {
-    border: 1px solid deepskyblue;
-    height: 10%;
-}
 
-div#solutionComponent {
-    border: 1px solid deepskyblue;
-    height: 70%;
+/* mat-card#productivityComponent {
+
+} */
+
+mat-card#solutionComponent {
+    margin-bottom: 5px;
 }
 
 div.components {
-    border: 1px solid deepskyblue;
+    box-sizing: border-box;
 }
 
 div#componentWrapper {
     margin-left: 20%;
     width: 80%;
-    /* height: 100%; */
-    border: 1px solid black;
 }
 
 div#navigationComponent {
-    /* height: 100%; */
     position: absolute;
     width: 20%;
-    border: 1px solid black;
 }
 
 p#cardTitle {
     font-size: 0.5em;
     color: blue;
+}
+
+mat-card {
+    margin-left: 10px;
 }
 
 .hljs {
@@ -85,7 +80,7 @@ p#cardTitle {
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst {
-    color: #333;
+    color: #66D9EF;
     font-weight: 700
 }
 
@@ -105,7 +100,7 @@ p#cardTitle {
 .hljs-section,
 .hljs-selector-id,
 .hljs-title {
-    color: #900;
+    color: #A6E22E;
     font-weight: 700
 }
 
@@ -162,87 +157,11 @@ p#cardTitle {
     font-weight: 700
 }
 
-
-/*
-
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-
-*/
-
-.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    background: #23241f;
-}
-
-.hljs,
-.hljs-tag,
-.hljs-subst {
-    color: #f8f8f2;
-}
-
-.hljs-strong,
-.hljs-emphasis {
-    color: #a8a8a2;
-}
-
-.hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
-    color: #ae81ff;
-}
-
-.hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-selector-class {
-    color: #a6e22e;
-}
-
-.hljs-strong {
-    font-weight: bold;
-}
-
-.hljs-emphasis {
-    font-style: italic;
-}
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
-    color: #f92672;
-}
-
-.hljs-symbol,
-.hljs-attribute {
-    color: #66d9ef;
-}
-
-.hljs-params,
-.hljs-class .hljs-title {
-    color: #f8f8f2;
-}
-
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-    color: #e6db74;
-}
-
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-    color: #75715e;
+pre {
+    background-color: #49483E;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    color: #F8F8F2;
+    font-size: 1.2em;
+    border-radius: 3px;
 }

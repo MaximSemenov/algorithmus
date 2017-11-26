@@ -1,6 +1,6 @@
 let fs = require('fs'),
     files,
-    counterId = 0
+    counterId = 0;
 
 
 let promise = new Promise(function (resolve, reject) {
@@ -12,7 +12,6 @@ let promise = new Promise(function (resolve, reject) {
 
             if (err) {
                 console.log(`${errorMsg} on readdir() function`);
-                // reject(); ??? Where to place reject ?
                 return;
             }
             resolve([fileNames, directory]);
@@ -55,12 +54,6 @@ function readAllFiles(filess) {
                     console.log(err);
                     return;
                 }
-
-                // console.log(data.toString().match(/#.+#/)[0].replace(/#/g, ""))
-                // console.log(data.toString().match(/#.+#/)[0].replace(/#/g, ""))
-
-
-
 
                 problem.id = counterId;
                 problem.title = data.toString().match(/#.+#/)[0].replace(/#/g, "");

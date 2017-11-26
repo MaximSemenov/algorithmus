@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
 import { ProblemService } from './../services/problem.service';
 
 import { Observable } from 'rxjs/Rx';
@@ -14,6 +14,9 @@ import { Subscription } from 'rxjs/Subscription';
 
 
 
+
+
+
 @Component({
   selector: 'app-productivity',
   templateUrl: './productivity.component.html',
@@ -25,10 +28,17 @@ export class ProductivityComponent implements OnInit, OnDestroy {
   public problemSolution: string;
   public performanceTime: number;
   public isReportShown: Boolean = false;
+  public testResults = [];
 
 
 
-  constructor(private problemService: ProblemService, private route: ActivatedRoute) { }
+  constructor(private problemService: ProblemService, private route: ActivatedRoute, private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.isReportShown = false;
+      }
+    });
+  }
 
   ngOnInit() {
 
@@ -45,41 +55,65 @@ export class ProductivityComponent implements OnInit, OnDestroy {
       })
       .subscribe(problem => this.problemSolution = problem.solution);
 
+
+
   }
+
+  openPerformanceCard(testPerformanceButton) {
+
+    if (!this.isReportShown) {
+      this.executeSolution();
+      this.isReportShown = !this.isReportShown;
+      testPerformanceButton.textContent = 'Close it';
+      return;
+    }
+    testPerformanceButton.textContent = 'Test Performance';
+    this.isReportShown = false;
+  }
+
 
   executeSolution() {
 
-    this.isReportShown = !this.isReportShown;
-
     const startTime = + new Date();
 
-    Array(1000).fill(1).forEach(_ => {
+    Array(1000).fill(1).forEach(() => {
       eval(this.problemSolution);
     });
 
     const endTime = + new Date();
-
-    console.log(startTime);
-    console.log(endTime);
-    console.log(endTime - startTime);
-
-    // this.isReportShown = !this.isReportShown;
-
+    this.test();
     return this.performanceTime = endTime - startTime;
-
-
-
-
   }
 
+  test() {
+    const testedFunction = eval(this.problemSolution);
+    const test = [
+      { testUnit: 'eye', rightResult: true },
+      { testUnit: '_eye', rightResult: true },
+      { testUnit: 'Hello', rightResult: true },
+      { testUnit: 'race car', rightResult: true },
+      { testUnit: 'not a palindrome', rightResult: false },
+      { testUnit: 'A man, a plan, a canal. Panama', rightResult: true },
+      { testUnit: 'never odd or even', rightResult: true },
+      { testUnit: 'nope', rightResult: false },
+      { testUnit: 'almostomla', rightResult: false },
+      { testUnit: 'My age is 0, 0 si ega ym.', rightResult: true }
+    ];
 
+    test.forEach(item => {
+      const functionExecution = testedFunction(item.testUnit);
+      this.testResults.push({
+        testUnit: item.testUnit,
+        testResult: {
+          result: functionExecution,
+          expectedResult: item.rightResult,
+          passed: functionExecution === item.rightResult
+        }
+      });
+    });
+  }
 
   ngOnDestroy() {
-
     this.problemSolutionSubscribtion.unsubscribe();
-
-
   }
-
-
 }
