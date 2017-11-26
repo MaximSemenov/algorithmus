@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "title": "Reverse a String",
+        "description": "Reverse the provided string. You may need to turn the string into an array before you can reverse it. Your result must be a string.",
+        "solution": "CihmdW5jdGlvbiBhbGdvcml0aG0oc3RyKSB7CiAgICBmdW5jdGlvbiByZXZlcnNlU3RyaW5nKHN0cikgewogICAgICAgIHZhciBteXN0ciA9IHN0ci5zcGxpdCgiIikucmV2ZXJzZSgpLmpvaW4oIiIpOwogICAgICAgIHJldHVybiBteXN0cjsKICAgIH0KICAgIHJldHVybiByZXZlcnNlU3RyaW5nKCJoZWxsbyIpOwp9KQ==",
+        "filename": "base64_solution1.js"
+    },
+    {
+        "id": 1,
+        "title": "Factorialize a Number",
+        "description": "Return the factorial of the provided integer. If the integer is represented with the letter n, a factorial is the product of all positive integers less than or equal to n. Factorials are often represented with the shorthand notation n! For example: 5! = 1 * 2 * 3 * 4 * 5 = 120",
+        "solution": "CihmdW5jdGlvbiBhbGdvcml0aG0obnVtKSB7CgogICAgZnVuY3Rpb24gZmFjdG9yaWFsaXplKG51bSkgewogICAgICAgIGlmIChudW0gPT09IDApIHsgcmV0dXJuIDE7IH0KICAgICAgICByZXR1cm4gKG51bSAhPSAxKSA/IG51bSAqIGZhY3RvcmlhbGl6ZShudW0gLSAxKSA6IDE7CiAgICB9CiAgICByZXR1cm4gZmFjdG9yaWFsaXplKDUpOwoKfSk=",
+        "filename": "base64_solution2.js"
+    },
+    {
+        "id": 2,
+        "title": "Check for Palindromes",
+        "description": "Return true if the given string is a palindrome. Otherwise, return false. A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing. Note: You'll need to remove all non-alphanumeric characters (punctuation, spaces and symbols) and turn everything lower case in order to check for palindromes. We'll pass strings with varying formats, such as \"racecar\", \"RaceCar\", and \"race CAR\" among others. We'll also pass strings with special symbols, such as \"2A3*3a2\", \"2A3 3a2\", and \"2_A3*3#A2\".",
+        "solution": "CihmdW5jdGlvbiBhbGdvcml0aG0oc3RyKSB7CgogICAgZnVuY3Rpb24gcGFsaW5kcm9tZShzdHIpIHsKICAgICAgICBzdHIgPSBzdHIucmVwbGFjZSgvXy9nLCAiIikucmVwbGFjZSgvXFcvZywgIiIpLnRvTG93ZXJDYXNlKCk7CiAgICAgICAgdmFyIG1TdHIgPSBzdHIuc3BsaXQoIiIpLnJldmVyc2UoKS5qb2luKCIiKTsKICAgICAgICBtU3RyID0gc3RyLnNwbGl0KCIiKS5yZXZlcnNlKCkuam9pbigiIikudG9Mb3dlckNhc2UoKTsKICAgICAgICBjb25zb2xlLmxvZyhzdHIpOwogICAgICAgIGZvciAodmFyIGkgPSAwOyBpIDwgbVN0ci5sZW5ndGg7IGkrKykgewogICAgICAgICAgICBpZiAobVN0ci5jaGFyQXQoaSkgIT09IHN0ci5jaGFyQXQoaSkpIHsKICAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICByZXR1cm4gdHJ1ZTsKICAgIH0KICAgIHJldHVybiBwYWxpbmRyb21lKHN0cik7Cn0pCg==",
+        "filename": "base64_solution3.js"
+    }
+]
