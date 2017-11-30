@@ -1,6 +1,16 @@
 .testSuccess {
-    
-        color: green;
-    
-    
-    }
+    color: green;
+}
+
+img#testStatus {
+    width: 30px;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+span#passedValue {
+    background-color: gainsboro;
+    border-radius: 2px;
+    font-size: 1.1em;
+    padding: 2px;
+}

@@ -5,7 +5,7 @@ let fs = require('fs'),
 
 let promise = new Promise(function (resolve, reject) {
 
-    readFilesFromDirectory('./base64_solutions', null, "There is an Error happened...");
+    readFilesFromDirectory('./algorithms_collection', null, "There is an Error happened...");
 
     function readFilesFromDirectory(directory, fileContent, errorMsg) {
         fs.readdir(directory, (err, fileNames) => {
@@ -20,6 +20,7 @@ let promise = new Promise(function (resolve, reject) {
 });
 
 promise.then(files => {
+    
     console.log(`These files: '${files[0]}' have been written from ${files[1]} directory.`);
 
     readAllFiles(files[0]).then(problems => {
@@ -45,7 +46,7 @@ function readAllFiles(filess) {
 
         arrOfPromises.push(new Promise(function (resolve, reject) {
 
-            fs.readFile('./base64_solutions/' + filename, (err, data) => {
+            fs.readFile('./algorithms_collection/' + filename, (err, data) => {
 
                 var problem = {};
 

@@ -1,7 +1,9 @@
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { ProblemService } from './services/problem.service';
 import { NavigationService } from './services/navigation.service';
+import { AcceptanceTestService } from './productivity/acceptance-test.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,15 +29,13 @@ import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { FailedComponent } from './productivity/failed/failed.component';
 import { SuccessComponent } from './productivity/success/success.component';
-
-
-
+import { AlgorithmOverviewComponent } from './algorithm-overview/algorithm-overview.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'problem/:id', component: HomeComponent }
+  { path: 'problem/:id', component: AlgorithmOverviewComponent }
 ];
 
 
@@ -54,7 +54,8 @@ export function highlightJsFactory() {
     AtobPipe,
     WelcomeComponent,
     FailedComponent,
-    SuccessComponent
+    SuccessComponent,
+    AlgorithmOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,7 @@ export function highlightJsFactory() {
     })
 
   ],
-  providers: [NavigationService, ProblemService],
+  providers: [NavigationService, ProblemService, AcceptanceTestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

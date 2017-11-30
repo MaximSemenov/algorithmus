@@ -1,6 +1,9 @@
+import { AcceptanceTestService } from './acceptance-test.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
 import { ProblemService } from './../services/problem.service';
+import { testResults } from './acceptance-test.service';
+
 
 import { Observable } from 'rxjs/Rx';
 import { NavigationService } from './../services/navigation.service';
@@ -13,10 +16,6 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Subscription } from 'rxjs/Subscription';
 
 
-
-
-
-
 @Component({
   selector: 'app-productivity',
   templateUrl: './productivity.component.html',
@@ -27,15 +26,22 @@ export class ProductivityComponent implements OnInit, OnDestroy {
   public problemSolutionSubscribtion: Subscription;
   public problemSolution: string;
   public performanceTime: number;
-  public isReportShown: Boolean = false;
-  public testResults = [];
+  public isReportPerformanceShown: Boolean = false;
+  public isReportAcceptanceShown: Boolean = false;
+  public testResults: testResults[];
 
 
 
-  constructor(private problemService: ProblemService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private problemService: ProblemService,
+    private acceptanceTest: AcceptanceTestService,
+    private route: ActivatedRoute,
+    private router: Router) {
+
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.isReportShown = false;
+        this.isReportPerformanceShown = false;
+        this.isReportAcceptanceShown = false;
       }
     });
   }
@@ -55,24 +61,9 @@ export class ProductivityComponent implements OnInit, OnDestroy {
       })
       .subscribe(problem => this.problemSolution = problem.solution);
 
-
-
   }
 
-  openPerformanceCard(testPerformanceButton) {
-
-    if (!this.isReportShown) {
-      this.executeSolution();
-      this.isReportShown = !this.isReportShown;
-      testPerformanceButton.textContent = 'Close it';
-      return;
-    }
-    testPerformanceButton.textContent = 'Test Performance';
-    this.isReportShown = false;
-  }
-
-
-  executeSolution() {
+  runPerformanceTest(): number {
 
     const startTime = + new Date();
 
@@ -81,39 +72,21 @@ export class ProductivityComponent implements OnInit, OnDestroy {
     });
 
     const endTime = + new Date();
-    this.test();
     return this.performanceTime = endTime - startTime;
+
   }
 
-  test() {
-    const testedFunction = eval(this.problemSolution);
-    const test = [
-      { testUnit: 'eye', rightResult: true },
-      { testUnit: '_eye', rightResult: true },
-      { testUnit: 'Hello', rightResult: true },
-      { testUnit: 'race car', rightResult: true },
-      { testUnit: 'not a palindrome', rightResult: false },
-      { testUnit: 'A man, a plan, a canal. Panama', rightResult: true },
-      { testUnit: 'never odd or even', rightResult: true },
-      { testUnit: 'nope', rightResult: false },
-      { testUnit: 'almostomla', rightResult: false },
-      { testUnit: 'My age is 0, 0 si ega ym.', rightResult: true }
-    ];
+  runAcceptanceTest(): Subscription {
 
-    test.forEach(item => {
-      const functionExecution = testedFunction(item.testUnit);
-      this.testResults.push({
-        testUnit: item.testUnit,
-        testResult: {
-          result: functionExecution,
-          expectedResult: item.rightResult,
-          passed: functionExecution === item.rightResult
-        }
-      });
-    });
+    return this.route.params
+      .pluck('id')
+      .filter(Boolean)
+      .switchMap(id => this.acceptanceTest.startTesting(+id))
+      .subscribe(testResults => this.testResults = testResults);
+
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.problemSolutionSubscribtion.unsubscribe();
   }
 }

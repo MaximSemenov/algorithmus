@@ -4,6 +4,10 @@
     justify-content: space-around;
 }
 
+.report {
+    display: inline-block;
+}
+
 span#passedValue {
     background-color: gainsboro;
     border-radius: 2px;
@@ -11,21 +15,6 @@ span#passedValue {
     padding: 2px;
 }
 
-span#solutionResult {
-    background-color: gainsboro;
-    /* border: 1px solid black; */
-    border-radius: 2px;
-    font-size: 1.1em;
-    padding: 2px;
-}
-
-span#correctResult {
-    background-color: #A6E22E;
-    /* border: 1px solid black; */
-    border-radius: 2px;
-    font-size: 1.1em;
-    padding: 2px;
-}
 
 li#listAcceptanceReport {
     padding-bottom: 8px;
@@ -45,8 +34,3 @@ ul {
     list-style-type: none;
 }
 
-img#testStatus {
-    width: 30px;
-    vertical-align: middle;
-    border-radius: 3px;
-}
