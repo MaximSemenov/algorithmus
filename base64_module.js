@@ -20,7 +20,7 @@ let promise = new Promise(function (resolve, reject) {
 });
 
 promise.then(files => {
-    
+
     console.log(`These files: '${files[0]}' have been written from ${files[1]} directory.`);
 
     readAllFiles(files[0]).then(problems => {
@@ -55,15 +55,16 @@ function readAllFiles(filess) {
                     console.log(err);
                     return;
                 }
-
+                // console.log(data.toString().match(/~.+~/))
                 problem.id = counterId;
+         
                 problem.title = data.toString().match(/#.+#/)[0].replace(/#/g, "");
                 problem.description = data.toString().match(/@.+@/)[0].replace(/@/g, "");
-
+                problem.testFileName = data.toString().match(/~.+~/)[0].replace(/~/g, "");
+                problem.fileName = filename;
                 data = data.toString().match(/%&[^]+/g)[0].replace(/%&/, "");
 
                 problem.solution = new Buffer(data).toString('base64');
-                problem.filename = filename;
 
                 problems.push(problem);
                 counterId++;

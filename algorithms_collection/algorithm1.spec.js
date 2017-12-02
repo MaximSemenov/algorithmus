@@ -1,3 +1,6 @@
+const testedFunction = require('./algorithm1');
+testResults = [];
+
 const test = [
 
   { testUnit: 'Hello', rightResult: 'olleh' },
@@ -6,15 +9,24 @@ const test = [
 
 ];
 
-const results = [];
+testSolution();
 
-results.push(1);
+function testSolution() {
 
-results.push(1);
+  test.forEach(testObject => {
 
-results.push(1);
+    const functionExecution = testedFunction.f(testObject.testUnit);
 
-results.push(1);
+    testResults.push({
+      testUnit: testObject.testUnit,
+      testReport: {
+        result: functionExecution,
+        expectedResult: testObject.rightResult,
+        passed: functionExecution === testObject.rightResult
+      }
+    })
+  });
+  return testResults;
+}
 
-
-exports = results;
+exports.testResults = testResults;

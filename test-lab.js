@@ -1,41 +1,21 @@
-const http = require('http');
-const server = http.createServer();
-const url = require('url');
-const fs = require('fs');
-const indexOfProblems = require('./src/assets/base64_problems.json');
+const http = require('http'),
+    server = http.createServer(),
+    url = require('url'),
+    indexOfProblems = require('./src/assets/base64_problems.json');
 
-function testProblemSolution(testFileName) {
-
-    const testPack = require('./algorithms_collection/' + testFileName.replace('.js', '.spec.js'));
-    const testResultsNode = [];
-
-    testPack.TestUnits.forEach(item => {
-
-        const functionExecution = testPack.Func(item.testUnit);
-
-        testResultsNode.push({
-            testUnit: item.testUnit,
-            testReport: {
-                result: functionExecution,
-                expectedResult: item.rightResult,
-                passed: functionExecution === item.rightResult
-            }
-        })
-    });
-
-    return testResultsNode;
+function getTestResults(testFileName) {
+    console.log(require(`./algorithms_collection/${testFileName}`).testResults);
+    return require(`./algorithms_collection/${testFileName}`).testResults;
 }
 
 server.on('request', (req, res) => {
 
-    const problemId = +url.parse(req.url, true).query.problemId;
-
-    const testFileName = indexOfProblems.filter(problem => problem.id === problemId)[0].filename;
-
-    const data = testProblemSolution(testFileName);
+    const problemId = +url.parse(req.url, true).query.problemId,
+        testFileName = indexOfProblems.filter(problem => problem.id === problemId)[0].testFileName,
+        testResults = getTestResults(testFileName);
 
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(data));
+    res.end(JSON.stringify(testResults));
 
 })
 

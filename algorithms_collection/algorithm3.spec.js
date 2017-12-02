@@ -1,3 +1,6 @@
+const testedFunction = require('./algorithm3');
+testResults = [];
+
 const test = [
   { testUnit: 'eye', rightResult: true },
   { testUnit: '_eye', rightResult: true },
@@ -11,17 +14,24 @@ const test = [
   { testUnit: 'My age is 0, 0 si ega ym.', rightResult: true }
 ];
 
-function palindrome(str) {
-  str = str.replace(/_/g, "").replace(/\W/g, "").toLowerCase();
-  var mStr = str.split("").reverse().join("");
-  mStr = str.split("").reverse().join("").toLowerCase();
-  for (var i = 0; i < mStr.length; i++) {
-    if (mStr.charAt(i) !== str.charAt(i)) {
-      return false;
-    }
-  }
-  return true;
+testSolution();
+
+function testSolution() {
+
+  test.forEach(testObject => {
+
+    const functionExecution = testedFunction.f(testObject.testUnit);
+
+    testResults.push({
+      testUnit: testObject.testUnit,
+      testReport: {
+        result: functionExecution,
+        expectedResult: testObject.rightResult,
+        passed: functionExecution === testObject.rightResult
+      }
+    })
+  });
+  return testResults;
 }
 
-exports.TestUnits = test;
-exports.Func = palindrome;
+exports.testResults = testResults;

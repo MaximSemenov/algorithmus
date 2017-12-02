@@ -84,6 +84,7 @@ export class ProductivityComponent implements OnInit, OnDestroy {
       .switchMap(id => this.acceptanceTest.startTesting(+id))
       .subscribe(testResults => this.testResults = testResults);
 
+
   }
 
   ngOnDestroy(): void {

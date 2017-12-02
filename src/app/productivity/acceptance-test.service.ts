@@ -24,6 +24,9 @@ export class AcceptanceTestService {
 
   startTesting(id): Observable<testResults[]> {
 
-    return this.http.get<testResults[]>('http://localhost:4000/', { params: { problemId: id } });
+    return this.http.get<testResults[]>('https://stark-tundra-14847.herokuapp.com/', { params: { problemId: id } });
+    // return this.http.get<testResults[]>('http://localhost:5000/', { params: { problemId: id } });
+
+
   }
 }
