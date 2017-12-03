@@ -223,7 +223,7 @@ var AppModule = (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_router__["d" /* RouterModule */].forRoot(routes),
+                __WEBPACK_IMPORTED_MODULE_6__angular_router__["d" /* RouterModule */].forRoot(routes, { useHash: true }),
                 __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_material_card__["a" /* MatCardModule */],

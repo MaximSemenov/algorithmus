@@ -59,7 +59,7 @@ export function highlightJsFactory() {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {useHash: true}),
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
