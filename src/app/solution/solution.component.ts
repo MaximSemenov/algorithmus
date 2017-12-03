@@ -46,18 +46,12 @@ export class SolutionComponent implements OnInit, OnDestroy {
       })
       .subscribe(problem => this.problemSolution = problem.solution);
 
-
-
-
   }
-
-
 
 
   ngOnDestroy() {
 
     this.problemSolutionSubscribtion.unsubscribe();
-
 
   }
 

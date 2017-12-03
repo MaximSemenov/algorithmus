@@ -10,18 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationComponent implements OnInit {
 
   public links: Links[];
-  public isDropDownOpen: Boolean = false;
-  public ff: Boolean = false;
 
   constructor(private navService: NavigationService) { }
 
   ngOnInit() {
 
-    this.links = this.navService.getAllLinks();
+    this.navService.getAllLinks()
+      .subscribe(links => this.links = links);
 
   }
-
-
 
 }
 

@@ -444,11 +444,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var NavigationComponent = (function () {
     function NavigationComponent(navService) {
         this.navService = navService;
-        this.isDropDownOpen = false;
-        this.ff = false;
     }
     NavigationComponent.prototype.ngOnInit = function () {
-        this.links = this.navService.getAllLinks();
+        var _this = this;
+        this.navService.getAllLinks()
+            .subscribe(function (links) { return _this.links = links; });
     };
     NavigationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
@@ -724,6 +724,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ProductivityComponent = (function () {
+    // public abc: Subscription;
     function ProductivityComponent(problemService, acceptanceTest, route, router) {
         var _this = this;
         this.problemService = problemService;
@@ -762,14 +763,15 @@ var ProductivityComponent = (function () {
     };
     ProductivityComponent.prototype.runAcceptanceTest = function () {
         var _this = this;
-        return this.route.params
+        // return this.abc =
+        this.route.params
             .pluck('id')
             .filter(Boolean)
             .switchMap(function (id) { return _this.acceptanceTest.startTesting(+id); })
             .subscribe(function (testResults) { return _this.testResults = testResults; });
     };
     ProductivityComponent.prototype.ngOnDestroy = function () {
-        this.problemSolutionSubscribtion.unsubscribe();
+        // this.abc.unsubscribe();
     };
     ProductivityComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
@@ -858,6 +860,9 @@ var SuccessComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavigationService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -868,22 +873,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var NavigationService = (function () {
-    function NavigationService() {
-        this.links = [
-            { id: 0, title: 'Check for Palindromes' },
-            { id: 1, title: 'Reverse a String' },
-            { id: 2, title: 'Factorialize a Number' }
-        ];
+    function NavigationService(http) {
+        this.http = http;
     }
     NavigationService.prototype.getAllLinks = function () {
-        return this.links;
+        return this.http.get('./assets/base64_problems.json')
+            .map(function (problems) {
+            return problems.map(function (problem) {
+                return { id: problem.id, title: problem.title };
+            });
+        });
     };
     NavigationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], NavigationService);
     return NavigationService;
+    var _a;
 }());
 
 //# sourceMappingURL=navigation.service.js.map

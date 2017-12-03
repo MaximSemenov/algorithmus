@@ -29,6 +29,7 @@ export class ProductivityComponent implements OnInit, OnDestroy {
   public isReportPerformanceShown: Boolean = false;
   public isReportAcceptanceShown: Boolean = false;
   public testResults: testResults[];
+  // public abc: Subscription;
 
 
 
@@ -42,6 +43,7 @@ export class ProductivityComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd) {
         this.isReportPerformanceShown = false;
         this.isReportAcceptanceShown = false;
+
       }
     });
   }
@@ -76,18 +78,18 @@ export class ProductivityComponent implements OnInit, OnDestroy {
 
   }
 
-  runAcceptanceTest(): Subscription {
+  runAcceptanceTest() {
 
-    return this.route.params
+    // return this.abc =
+    this.route.params
       .pluck('id')
       .filter(Boolean)
       .switchMap(id => this.acceptanceTest.startTesting(+id))
       .subscribe(testResults => this.testResults = testResults);
 
-
   }
 
-  ngOnDestroy(): void {
-    this.problemSolutionSubscribtion.unsubscribe();
+  ngOnDestroy() {
+    // this.abc.unsubscribe();
   }
 }

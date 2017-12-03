@@ -1,4 +1,8 @@
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Problem } from './problem.service';
+import 'rxjs/add/operator/map';
 
 export type Links = {
   id: number,
@@ -10,19 +14,18 @@ export type Links = {
 
 export class NavigationService {
 
-  private links: Links[] = [
+  constructor(private http: HttpClient) { }
 
-    { id: 0, title: 'Check for Palindromes' },
-    { id: 1, title: 'Reverse a String' },
-    { id: 2, title: 'Factorialize a Number' }
-  ];
+  getAllLinks(): Observable<Links[]> {
 
-  constructor() { }
+    return this.http.get<Problem[]>('./assets/base64_problems.json')
+      .map(problems => {
 
-  getAllLinks() {
+        return problems.map(problem => {
+          return { id: problem.id, title: problem.title };
+        });
 
-    return this.links;
-
+      });
   }
 }
 
