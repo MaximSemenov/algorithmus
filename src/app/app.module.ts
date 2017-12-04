@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'problem/:id', component: AlgorithmOverviewComponent }
 ];
 
+const hashState: boolean = environment.hashState;
 
 export function highlightJsFactory() {
   return hljs;
@@ -59,7 +61,7 @@ export function highlightJsFactory() {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, {useHash: true}),
+    RouterModule.forRoot(routes, {useHash: hashState}),
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,

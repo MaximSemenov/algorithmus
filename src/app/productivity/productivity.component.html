@@ -3,7 +3,7 @@
 
     <p id="cardTitle">Productivity card:</p>
     <div>
-        <button mat-raised-button color="primary" (click)="isReportPerformanceShown = !isReportPerformanceShown; runPerformanceTest($event.target)">Test Performance</button>
+        <button mat-raised-button color="primary" (click)="isReportPerformanceShown = !isReportPerformanceShown; runPerformanceTest()">Test Performance</button>
         <button mat-raised-button color="primary" (click)="isReportAcceptanceShown = !isReportAcceptanceShown; runAcceptanceTest()">Run Acceptance Test</button>
     </div>
     <div class="report" *ngIf="isReportPerformanceShown" ng-focus="focused = true">

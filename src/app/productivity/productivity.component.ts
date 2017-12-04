@@ -26,8 +26,8 @@ export class ProductivityComponent implements OnInit, OnDestroy {
   public problemSolutionSubscribtion: Subscription;
   public problemSolution: string;
   public performanceTime: number;
-  public isReportPerformanceShown: Boolean = false;
-  public isReportAcceptanceShown: Boolean = false;
+  public isReportPerformanceShown: boolean = false;
+  public isReportAcceptanceShown: boolean = false;
   public testResults: testResults[];
   // public abc: Subscription;
 
