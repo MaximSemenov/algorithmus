@@ -15,7 +15,7 @@ server.on('request', (req, res) => {
         testResults = getTestResults(testFileName);
 
     res.writeHead(200, { 
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://maximsemenov.github.io',
         'Content-Type': 'application/json'
     });
     res.end(JSON.stringify(testResults));

@@ -15,5 +15,5 @@ function palindrome(str) {
     return true;
 }
 palindrome('eye');
-
+//%&
 exports.f = palindrome;

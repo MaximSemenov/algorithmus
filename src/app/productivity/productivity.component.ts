@@ -66,7 +66,7 @@ export class ProductivityComponent implements OnInit, OnDestroy {
   }
 
   runPerformanceTest(): number {
-
+    console.log(this.problemSolution)
     const startTime = + new Date();
 
     Array(1000).fill(1).forEach(() => {

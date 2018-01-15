@@ -55,15 +55,15 @@ function readAllFiles(filess) {
                     console.log(err);
                     return;
                 }
-                // console.log(data.toString().match(/~.+~/))
+
                 problem.id = counterId;
-         
+
                 problem.title = data.toString().match(/#.+#/)[0].replace(/#/g, "");
                 problem.description = data.toString().match(/@.+@/)[0].replace(/@/g, "");
                 problem.testFileName = data.toString().match(/~.+~/)[0].replace(/~/g, "");
                 problem.fileName = filename;
-                data = data.toString().match(/%&[^]+/g)[0].replace(/%&/, "");
-
+                data = data.toString().match(/%&[^]+%&/g)[0].replace(/%&/g, "").replace(/(\/\/)/, "");
+// .replace.replace is not a good solutions, change when I have more time. 
                 problem.solution = new Buffer(data).toString('base64');
 
                 problems.push(problem);
@@ -77,3 +77,7 @@ function readAllFiles(filess) {
     return Promise.all(arrOfPromises).then(_ => problems);
 };
 
+// TODO 1. Use JSDoc instead of custom marks.
+// TODO 2. This base 64 module works manually make automatically on the server. 
+// TODO 3. Change the way of reading files from a directory because it grabes (reads) test files .spec.js which should be avoided.
+// Maxim Semenov
