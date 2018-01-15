@@ -14,7 +14,10 @@ server.on('request', (req, res) => {
         testFileName = indexOfProblems.filter(problem => problem.id === problemId)[0].testFileName,
         testResults = getTestResults(testFileName);
 
-    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.writeHead(200, { 
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+    });
     res.end(JSON.stringify(testResults));
 
 })
